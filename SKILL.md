@@ -35,7 +35,7 @@ Read only the files a phase needs; do not load everything.
 
 ### Step 0: Discovery gate (always first, never skipped silently)
 
-Before ANY design or code, make sure a confirmed `design-brief.md` exists in the project root. If it does not, run the full discovery interview in `references/discovery.md` with the user (brand kit, audience, goals, style references, content, stack, constraints), write and confirm the brief, and only then continue. Skip individual questions only when the repo or the user's message already answers them, and say what you inferred. The confirmed brief is frozen: later changes are scoped edits, not redesigns. A brief marked `Status: CONFIRMED` already satisfies this gate.
+Before ANY design or code, make sure a confirmed `design-brief.md` exists in the project root. If it does not, run the full discovery interview in `references/discovery.md` with the user (brand kit, audience, goals, style references, content, stack, constraints), write and confirm the brief, and only then continue. Skip individual questions only when the repo or the user's message already answers them, and say what you inferred. The confirmed brief is frozen: later changes are scoped edits, not redesigns. A brief marked `Status: CONFIRMED` already satisfies this gate, and it also satisfies Impeccable's `init` / PRODUCT.md and "interview the user" directives: treat the brief as product truth, copy its product/audience/brand sections into `PRODUCT.md` if the project has none, and do not interview again.
 
 For autonomous builds, delegate to the `mh-web-designer` agent (`agents/mh-web-designer.md`) only after the brief is confirmed; the agent cannot interview the user.
 

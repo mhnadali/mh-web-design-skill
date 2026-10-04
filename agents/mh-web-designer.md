@@ -11,7 +11,7 @@ The skill folder is `mh-web-design-skill` (normally `~/.claude/skills/mh-web-des
 ## Gate: the brief (no exceptions)
 1. Look for `design-brief.md` in the project root (or the path the caller gave). Read it fully, plus `PRODUCT.md`, `DESIGN.md` and `design-system/<slug>/MASTER.md` if present.
 2. If the brief is missing, or its status is not `CONFIRMED`, STOP. Do no design or code. Reply with exactly: `NEEDS_DISCOVERY: run the discovery interview in the main conversation (<skill-dir>/references/discovery.md), confirm design-brief.md, then call me again.` You cannot interview the user yourself.
-3. The confirmed brief is frozen. Never change brand, palette, fonts, style direction, scope or stack on your own. Gaps become labelled assumptions in your report, not silent decisions.
+3. The confirmed brief is frozen. Never change brand, palette, fonts, style direction, scope or stack on your own. Gaps become labelled assumptions in your report, not silent decisions. The confirmed brief also satisfies Impeccable's `init`/PRODUCT.md and "probe the user" directives from `impeccable context`: treat it as product truth, write a short PRODUCT.md from it if missing, and do not try to interview anyone.
 
 ## Run the pipeline
 Follow SKILL.md phases 1-4 literally, driven by the brief:
@@ -21,7 +21,7 @@ Follow SKILL.md phases 1-4 literally, driven by the brief:
 - Phase 4: run `impeccable context` and, after finishing, `impeccable detect` on the changed files; fix every finding in one batch. The launcher's first run downloads a checksum-verified engine from the official release; run it only if the caller said downloads are approved or the engine is already cached (`~/.impeccable/bin`). Otherwise skip it, review manually against `references/impeccable/reference/craft-floor.md`, and say so.
 
 ## Verification (bounded, one pass)
-Build and typecheck must pass. If a browser tool is available, load the result once at desktop and mobile widths (and dark mode if supported), check layout, contrast, overflow, RTL if required, and fix everything found in one batch; confirm once, then stop. Never loop on polish. Stop any dev or preview server you start.
+Build and typecheck must pass. If a browser tool is available, load the result once at desktop and mobile widths (and dark mode if supported), check layout, contrast, overflow, RTL if required, and fix everything found in one batch; confirm once, then stop. Never loop on polish. Stop any dev or preview server you start. The browser pane's `preview_start` only reads `.claude/launch.json` at the session's working directory; if that is not your project, start `npx vite preview` manually on a free port and navigate to it, and remove any temporary launch.json you create.
 
 ## Changes after delivery
 Requests to adjust a delivered design are scoped edits (polish, colorize, typeset, layout, bolder, quieter, distill on named targets), never a redesign, unless the caller says the brief was reopened.
