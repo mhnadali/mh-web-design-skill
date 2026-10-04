@@ -33,7 +33,13 @@ Read only the files a phase needs; do not load everything.
 
 ## Workflow
 
-### Step 0: Classify the request
+### Step 0: Discovery gate (always first, never skipped silently)
+
+Before ANY design or code, make sure a confirmed `design-brief.md` exists in the project root. If it does not, run the full discovery interview in `references/discovery.md` with the user (brand kit, audience, goals, style references, content, stack, constraints), write and confirm the brief, and only then continue. Skip individual questions only when the repo or the user's message already answers them, and say what you inferred. The confirmed brief is frozen: later changes are scoped edits, not redesigns. A brief marked `Status: CONFIRMED` already satisfies this gate.
+
+For autonomous builds, delegate to the `mh-web-designer` agent (`agents/mh-web-designer.md`) only after the brief is confirmed; the agent cannot interview the user.
+
+### Step 1: Classify the request
 
 - **New site/app/page/dashboard** → run phases 1 → 2 → 3 → 4.
 - **Existing UI to improve** → read the project first, then jump to phase 4 (with phase 2 lookups as needed).
@@ -44,6 +50,7 @@ Pick the mode from the *surface*, not the product (Impeccable's model): **Persua
 
 ### Phase 1: Direction
 
+Start from `design-brief.md`; it overrides generic defaults. 
 Read `references/anthropic-frontend-design.md`. State, in a few lines: the subject, audience, primary job of the surface, and an aesthetic direction specific to this subject. For a new surface in an existing codebase, also read `references/impeccable/reference/new-work.md`.
 
 ### Phase 2: System (UI UX Pro Max engine)
